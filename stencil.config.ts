@@ -19,10 +19,20 @@ export const config: Config = {
       serviceWorker: null, // disable service workers
     },
     {
-      type: 'dist',
+      type: 'www',
       copy: [
-        { src: 'images' }
+        { src: 'assets', dest: 'assets',}
       ]
-    }
+    },
+    {
+      type: 'dist-custom-elements',
+      copy: [
+        {
+          src: 'assets',
+          dest: 'dist/assets',
+          warn: true,
+        }
+      ]
+    },
   ],
 };
