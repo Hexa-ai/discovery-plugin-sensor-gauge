@@ -1,8 +1,8 @@
 {
-  "name": "discovery-plugin-sensor-gauge",
+  "name": "@hexa-ai/discovery-plugin-sensor-gauge",
   "author": "Julien TALBOURDET",
-  "version": "0.0.1",
-  "description": "Stencil Component Starter",
+  "version": "1.0.0",
+  "description": "Sensor gauge plugin for the dashborad as code Discovery tool from SenX company.",
   "main": "dist/index.cjs.js",
   "module": "dist/index.js",
   "es2015": "dist/esm/index.mjs",
