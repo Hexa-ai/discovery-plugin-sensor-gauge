@@ -21,7 +21,7 @@ export const config: Config = {
     {
       type: 'www',
       copy: [
-        { src: 'assets', dest: 'assets',}
+        { src: 'assets', dest: 'build/assets',}
       ]
     },
     {
