@@ -1,75 +1,96 @@
-![Built With Stencil](https://img.shields.io/badge/-Built%20With%20Stencil-16161d.svg?logo=data%3Aimage%2Fsvg%2Bxml%3Bbase64%2CPD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0idXRmLTgiPz4KPCEtLSBHZW5lcmF0b3I6IEFkb2JlIElsbHVzdHJhdG9yIDE5LjIuMSwgU1ZHIEV4cG9ydCBQbHVnLUluIC4gU1ZHIFZlcnNpb246IDYuMDAgQnVpbGQgMCkgIC0tPgo8c3ZnIHZlcnNpb249IjEuMSIgaWQ9IkxheWVyXzEiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgeG1sbnM6eGxpbms9Imh0dHA6Ly93d3cudzMub3JnLzE5OTkveGxpbmsiIHg9IjBweCIgeT0iMHB4IgoJIHZpZXdCb3g9IjAgMCA1MTIgNTEyIiBzdHlsZT0iZW5hYmxlLWJhY2tncm91bmQ6bmV3IDAgMCA1MTIgNTEyOyIgeG1sOnNwYWNlPSJwcmVzZXJ2ZSI%2BCjxzdHlsZSB0eXBlPSJ0ZXh0L2NzcyI%2BCgkuc3Qwe2ZpbGw6I0ZGRkZGRjt9Cjwvc3R5bGU%2BCjxwYXRoIGNsYXNzPSJzdDAiIGQ9Ik00MjQuNywzNzMuOWMwLDM3LjYtNTUuMSw2OC42LTkyLjcsNjguNkgxODAuNGMtMzcuOSwwLTkyLjctMzAuNy05Mi43LTY4LjZ2LTMuNmgzMzYuOVYzNzMuOXoiLz4KPHBhdGggY2xhc3M9InN0MCIgZD0iTTQyNC43LDI5Mi4xSDE4MC40Yy0zNy42LDAtOTIuNy0zMS05Mi43LTY4LjZ2LTMuNkgzMzJjMzcuNiwwLDkyLjcsMzEsOTIuNyw2OC42VjI5Mi4xeiIvPgo8cGF0aCBjbGFzcz0ic3QwIiBkPSJNNDI0LjcsMTQxLjdIODcuN3YtMy42YzAtMzcuNiw1NC44LTY4LjYsOTIuNy02OC42SDMzMmMzNy45LDAsOTIuNywzMC43LDkyLjcsNjguNlYxNDEuN3oiLz4KPC9zdmc%2BCg%3D%3D&colorA=16161d&style=flat-square)
+# Discovery-plugin-sensor-gauge
 
-# Stencil Component Starter
+[![npm version](https://badge.fury.io/js/@hexa-ai%2Fdiscovery-plugin-sensor-gauge.svg)](https://badge.fury.io/js/@hexa-ai%2Fdiscovery-plugin-sensor-gauge)
 
-This is a starter project for building a standalone Web Component using Stencil.
 
-Stencil is also great for building entire apps. For that, use the [stencil-app-starter](https://github.com/ionic-team/stencil-app-starter) instead.
+Plugin for the dashborad as code Discovery tool from SenX company.
 
-# Stencil
+## Démo
 
-Stencil is a compiler for building fast web apps using Web Components.
+https://jsfiddle.net/jtalbourdet/bqrs9yvm/1/
 
-Stencil combines the best concepts of the most popular frontend frameworks into a compile-time rather than run-time tool.  Stencil takes TypeScript, JSX, a tiny virtual DOM layer, efficient one-way data binding, an asynchronous rendering pipeline (similar to React Fiber), and lazy-loading out of the box, and generates 100% standards-based Web Components that run in any browser supporting the Custom Elements v1 spec.
+## Installation
 
-Stencil components are just Web Components, so they work in any major framework or with no framework at all.
+```npm install @hexa-ai/discovery-plugin-sensor-gauge```
 
-## Getting Started
+## Use
 
-To start building a new web component using Stencil, clone this repo to a new directory:
+```
+<!DOCTYPE html>
+<html dir="ltr" lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=5.0" />
+    <title>Démo Discovery-plugin-csv-export</title>
 
-```bash
-git clone https://github.com/ionic-team/stencil-component-starter.git my-component
-cd my-component
-git remote rm origin
+<!-- Import Discovery -->
+    <script nomodule src="https://unpkg.com/@senx/discovery-widgets/dist/discovery/discovery.js"></script>
+    <script type="module" src="https://unpkg.com/@senx/discovery-widgets/dist/discovery/discovery.esm.js"></script>
+
+<!-- Import discovery-plugin-csv-export -->
+     <script nomodule src="https://unpkg.com/@hexa-ai/discovery-plugin-sensor-gauge/dist/discovery-plugin-sensor-gauge/discovery-plugin-sensor-gauge.js"></script>
+  <script type="module" src="https://unpkg.com/@hexa-ai/discovery-plugin-sensor-gauge/dist/discovery-plugin-sensor-gauge/discovery-plugin-sensor-gauge.esm.js"></script>
+
+ </head>
+  <body>
+<!-- Define a one tile dashboard with "radar" as a chart type and random values -->
+    <discovery-dashboard url="http://localhost:8080/api/v0/exec" dashboard-title="Test" debug>
+      {
+        'title' 'sensor-gauge'
+        'type' 'flex'
+        'description' 'Dashboard test'
+        'tiles' [
+          {
+            'title' 'Mesure de débit'
+            'x' 0 'y' 0 'w' 6 'h' 2
+            'type' 'sensor-gauge'
+            'data' {
+              'value' 23.5
+              'alertMessage' 'Débit trop fort'
+
+            }
+            'options' { 'unit' 'm3/h' 'scheme' 'CTHULHU' 'bgColor' 'white'  'extra' { 'maxValue' 100 'minValue' 0 'alertFontColor' 'yellow' 'alertBgColor' 'red' 'url' 'http://www.google.fr' 'icon' 'flow' } }
+          }
+          {
+            'title' 'Mesure de température'
+            'x' 6 'y' 0 'w' 3 'h' 2
+            'type' 'sensor-gauge'
+            'data' {
+              'value' 37.5
+              'alertMessage' 'Température trop haute'
+            }
+            'options' { 'unit' '°C' 'scheme' 'ECTOPLASM' 'bgColor' 'white'  'extra' { 'maxValue' 100 'minValue' 0 'splitNumber' 5  'alertBlink' true 'alertFontColor' 'yellow' 'alertBgColor' 'red' 'icon' 'temperature' } }
+          }
+          {
+            'title' 'Mesure de température'
+            'x' 9 'y' 0 'w' 3 'h' 2
+            'type' 'sensor-gauge'
+            'data' {
+              'value' 67
+              'alertMessage' 'Tourne trop vite'
+            }
+            'options' { 'unit' 'rpm' 'scheme' 'ECTOPLASM' 'bgColor' 'white'  'extra' { 'maxValue' 100 'minValue' 0 'splitNumber' 5  'alertBlink' true 'alertFontColor' 'yellow' 'alertBgColor' 'red' 'icon' 'fan' } }
+          }
+        ]
+      }
+      </discovery-dashboard>
+  </body>
+</html>
 ```
 
-and run:
+## Contributing
 
-```bash
-npm install
-npm start
-```
+Contributions are what make the open source community such an amazing place to learn, inspire, and create. Any contributions you make are greatly appreciated.
 
-To build the component for production, run:
+If you have a suggestion that would make this better, please fork the repo and create a pull request. You can also simply open an issue with the tag "enhancement". Don't forget to give the project a star! Thanks again!
 
-```bash
-npm run build
-```
+## License
 
-To run the unit tests for the components, run:
+Distributed under the MIT License. See LICENSE.txt for more information.
 
-```bash
-npm test
-```
+(back to top)
 
-Need help? Check out our docs [here](https://stenciljs.com/docs/my-first-component).
+## Contact
+TALBOURDET Julien - https://hexa-ai.fr - contact@hexa-ai.fr
 
-
-## Naming Components
-
-When creating new component tags, we recommend _not_ using `stencil` in the component name (ex: `<stencil-datepicker>`). This is because the generated component has little to nothing to do with Stencil; it's just a web component!
-
-Instead, use a prefix that fits your company or any name for a group of related components. For example, all of the Ionic generated web components use the prefix `ion`.
-
-
-## Using this component
-
-There are three strategies we recommend for using web components built with Stencil.
-
-The first step for all three of these strategies is to [publish to NPM](https://docs.npmjs.com/getting-started/publishing-npm-packages).
-
-### Script tag
-
-- Put a script tag similar to this `<script type='module' src='https://unpkg.com/my-component@0.0.1/dist/my-component.esm.js'></script>` in the head of your index.html
-- Then you can use the element anywhere in your template, JSX, html etc
-
-### Node Modules
-- Run `npm install my-component --save`
-- Put a script tag similar to this `<script type='module' src='node_modules/my-component/dist/my-component.esm.js'></script>` in the head of your index.html
-- Then you can use the element anywhere in your template, JSX, html etc
-
-### In a stencil-starter app
-- Run `npm install my-component --save`
-- Add an import to the npm packages `import my-component;`
-- Then you can use the element anywhere in your template, JSX, html etc
+Project Link: https://github.com/Hexa-ai/discovery-plugin-sensor-gauge
