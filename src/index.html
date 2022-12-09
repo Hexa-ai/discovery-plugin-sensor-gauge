@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html dir="ltr" lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=5.0" />
+    <title>Stencil Component Starter</title>
+    <!-- Import Discovery -->
+    <script nomodule src="https://unpkg.com/@senx/discovery-widgets/dist/discovery/discovery.js"></script>
+    <script type="module" src="https://unpkg.com/@senx/discovery-widgets/dist/discovery/discovery.esm.js"></script>
+
+    <!-- Import your plugin -->
+    <script type="module" src="/build/discovery-plugin-sensor-gauge.esm.js"></script>
+    <script nomodule src="/build/discovery-plugin-sensor-gauge.js"></script>
+
+  </head>
+  <body>
+    <discovery-dashboard url="https://sandbox.senx.io/api/v0/exec" dashboard-title="sensor-gauge" debug>
+      {
+        'title' 'sensor-gauge'
+        'type' 'flex'
+        'description' 'Dashboard test'
+        'tiles' [
+          {
+            'title' 'Mesure de débit'
+            'x' 0 'y' 0 'w' 6 'h' 2
+            'type' 'sensor-gauge'
+            'data' {
+              'value' 23.5
+              'alertMessage' 'Débit trop fort'
+
+            }
+            'options' { 'unit' 'm3/h' 'scheme' 'CTHULHU' 'bgColor' 'white'  'extra' { 'maxValue' 100 'minValue' 0 'alertFontColor' 'yellow' 'alertBgColor' 'red' 'url' 'http://www.google.fr' 'icon' 'flow' } }
+          }
+          {
+            'title' 'Mesure de température'
+            'x' 6 'y' 0 'w' 3 'h' 2
+            'type' 'sensor-gauge'
+            'data' {
+              'value' 37.5
+              'alertMessage' 'Température trop haute'
+            }
+            'options' { 'unit' '°C' 'scheme' 'ECTOPLASM' 'bgColor' 'white'  'extra' { 'maxValue' 100 'minValue' 0 'splitNumber' 5  'alertBlink' true 'alertFontColor' 'yellow' 'alertBgColor' 'red' 'icon' 'temperature' } }
+          }
+          {
+            'title' 'Mesure de température'
+            'x' 9 'y' 0 'w' 3 'h' 2
+            'type' 'sensor-gauge'
+            'data' {
+              'value' 67
+              'alertMessage' 'Tourne trop vite'
+            }
+            'options' { 'unit' 'rpm' 'scheme' 'ECTOPLASM' 'bgColor' 'white'  'extra' { 'maxValue' 100 'minValue' 0 'splitNumber' 5  'alertBlink' true 'alertFontColor' 'yellow' 'alertBgColor' 'red' 'icon' 'fan' } }
+          }
+        ]
+      }
+      </discovery-dashboard>
+  </body>
+</html>

@@ -1,0 +1,56 @@
+:host {
+  display: block;
+  width: 100%;
+  height: 100%;
+
+}
+.main-container{
+  width: 100%;
+  height: 100%;
+}
+.chart-container {
+  width: 100%;
+  height: 100%;
+}
+.icon {
+  position: absolute;
+  width: 20%;
+  max-height: 25%;
+  bottom: 40%;
+  left: 40%;
+}
+.rotate {
+  animation: rotation 2s infinite linear;
+}
+@keyframes rotation {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(359deg);
+  }
+}
+a.disabled {
+  pointer-events: none;
+  cursor: default;
+}
+.alert {
+  position: absolute;
+  bottom: 0px;
+  width: 100%;
+  height: 60px;
+  overflow: hidden;
+  text-align:center;
+  font: 1.2em "Fira Sans", sans-serif;
+}
+.blink {
+  animation-duration: .8s;
+  animation-name: clignoter;
+  animation-iteration-count: infinite;
+  transition: none;
+}
+@keyframes clignoter {
+  0%   { opacity:1; }
+  40%   {opacity:0; }
+  100% { opacity:1; }
+}
