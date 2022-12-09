@@ -129,15 +129,15 @@ export class DiscoveryPluginSensorGauge {
 
     switch(this.innerOptions.extra.icon) {
       case 'flow':{
-        this.iconPath='./../../images/flow.svg';
+        this.iconPath='/images/flow.svg';
         break;
       }
       case 'temperature':{
-        this.iconPath='./../../images/temperature.svg';
+        this.iconPath='/images/temperature.svg';
         break;
       }
       case 'fan':{
-        this.iconPath='./../../images/fan.svg';
+        this.iconPath='/images/fan.svg';
         break;
       }
     }
