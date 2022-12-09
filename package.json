@@ -1,7 +1,7 @@
 {
   "name": "@hexa-ai/discovery-plugin-sensor-gauge",
   "author": "Julien TALBOURDET",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "Sensor gauge plugin for the dashborad as code Discovery tool from SenX company.",
   "main": "dist/index.cjs.js",
   "module": "dist/index.js",

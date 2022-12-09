@@ -1,5 +1,5 @@
 import { ChartType, ColorLib, DataModel, DiscoveryEvent, GTSLib, Logger, Param, Utils } from '@senx/discovery-widgets';
-import { Component, Element, Event, EventEmitter, h, Listen, Method, Prop, State, Watch } from '@stencil/core';
+import { Component, Element, Event, EventEmitter, h, Listen, Method, Prop, State, Watch,getAssetPath } from '@stencil/core';
 import * as echarts from 'echarts';
 
 @Component({
@@ -129,15 +129,15 @@ export class DiscoveryPluginSensorGauge {
 
     switch(this.innerOptions.extra.icon) {
       case 'flow':{
-        this.iconPath='/images/flow.svg';
+        this.iconPath= getAssetPath('/images/flow.svg');
         break;
       }
       case 'temperature':{
-        this.iconPath='/images/temperature.svg';
+        this.iconPath=getAssetPath('/images/temperature.svg');
         break;
       }
       case 'fan':{
-        this.iconPath='/images/fan.svg';
+        this.iconPath=getAssetPath('/images/fan.svg');
         break;
       }
     }
