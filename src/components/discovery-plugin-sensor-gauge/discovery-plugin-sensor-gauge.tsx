@@ -193,10 +193,11 @@ export class DiscoveryPluginSensorGauge {
             show: false
           },
           title: {
-            show: false
+            show: false,
+            valueAnimation: false,
           },
           detail: {
-            valueAnimation: true,
+            valueAnimation: false,
             width: '60%',
             lineHeight: 40,
             borderRadius: 8,
@@ -214,66 +215,8 @@ export class DiscoveryPluginSensorGauge {
         }
       ]
     };
-    console.log(options)
     this.myChart.setOption(option)
-    setTimeout(()=>{this.myChart.resize() })
-    ;
-
-
-
-
-
-
-
-    // For each GTS
-    // gtsList.forEach((gts, i) => {
-    //   // if the GTS is a list of values
-    //   if (GTSLib.isGtsToPlot(gts)) {
-    //     const data = [];
-    //     // Compute the GTS color
-    //     const c = ColorLib.getColor(gts.id || i, this.innerOptions.scheme);
-    //     const color = ((this.innerResult.params || [])[i] || { datasetColor: c }).datasetColor || c;
-    //     // For each value
-    //     gts.v.forEach(d => {
-    //       // Handle date depending on the timeMode and the timeZone
-    //       const date = GTSLib.utcToZonedTime(d[0], this.divider, this.innerOptions.timeZone);
-    //       const dateLabel = (this.innerOptions.timeMode || 'date') === 'date'
-    //         ? GTSLib.toISOString(GTSLib.zonedTimeToUtc(date, 1, this.innerOptions.timeZone), 1, this.innerOptions.timeZone, this.innerOptions.timeFormat)
-    //           .replace('T', '\n').replace(/\+[0-9]{2}:[0-9]{2}$/gi, '')
-    //         : date;
-    //       // add the label
-    //       if (!labels.includes(dateLabel)) {
-    //         labels.push(dateLabel);
-    //       }
-    //       // add the value
-    //       data.push(d[d.length - 1]);
-    //     });
-    //     // add the dataset
-    //     datasets.push({
-    //       label: ((this.innerResult.params || [])[i] || { key: undefined }).key || GTSLib.serializeGtsMetadata(gts),
-    //       data,
-    //       borderColor: color,
-    //       backgroundColor: ColorLib.transparentize(color, 0.5)
-    //     })
-    //   }
-    // });
-    // if (!!this.chartElement) {
-    //   const ctx = this.chartElement.getContext('2d');
-    //   if (!this.myChart) {
-    //     this.myChart = new Chart(ctx, {
-    //       type: 'radar',
-    //       data: { labels, datasets },
-    //       options: {
-    //         animation: false,
-    //         responsive: true,
-    //         maintainAspectRatio: false
-    //       }
-    //     });
-    //   } else {
-    //     this.myChart.data = { labels, datasets };
-    //     this.myChart.update();
-    //   }
-    // }
+    setTimeout(()=>{this.myChart.resize() },500)
   }
 
   /*
@@ -286,7 +229,7 @@ export class DiscoveryPluginSensorGauge {
         <a href={this.innerOptions.extra.url} class={this.innerOptions.extra.url!=''? '':'disabled'}>
         <div ref={(el) => this.graph = el} class="chart-container"></div>
         <img src={this.iconPath} class={this.innerOptions.extra.icon=='fan' && this.innerResult.data[0].value!=0 ? 'icon rotate':'icon'} />
-        <div class={this.innerOptions.extra.alertBlink==true?'alert blink':'alert'} style={{'color': this.innerOptions.extra.alertFontColor!=undefined ? this.innerOptions.extra.alertFontColor: ColorLib.getColor(5, this.innerOptions.scheme),'background-color': this.innerOptions.extra.alertBgColor!=undefined ? this.innerOptions.extra.alertBgColor: 'transparent'  }} >
+        <div class={this.innerOptions.extra.alertBlink==true?'alert blink':'alert'} style={{'color': this.innerOptions.extra.alertFontColor!=undefined ? this.innerOptions.extra.alertFontColor: ColorLib.getColor(5, this.innerOptions.scheme),'background-color': this.innerOptions.extra.alertBgColor!=undefined && this.innerResult.data[0].alertMessage!=''? this.innerOptions.extra.alertBgColor: 'transparent'  }} >
             <p>
             {this.innerResult.data[0].alertMessage}
             </p>
