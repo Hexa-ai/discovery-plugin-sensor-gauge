@@ -7,7 +7,7 @@ Plugin for the dashborad as code Discovery tool from SenX company.
 
 ## Démo
 
-https://jsfiddle.net/jtalbourdet/bqrs9yvm/1/
+https://jsfiddle.net/jtalbourdet/vzLr43cf/5/
 
 ## Installation
 
@@ -34,7 +34,7 @@ https://jsfiddle.net/jtalbourdet/bqrs9yvm/1/
  </head>
   <body>
 <!-- Define a one tile dashboard with "radar" as a chart type and random values -->
-    <discovery-dashboard url="http://localhost:8080/api/v0/exec" dashboard-title="Test" debug>
+    <discovery-dashboard url="https://sandbox.senx.io/api/v0/exec" dashboard-title="Test" debug>
       {
         'title' 'sensor-gauge'
         'type' 'flex'
