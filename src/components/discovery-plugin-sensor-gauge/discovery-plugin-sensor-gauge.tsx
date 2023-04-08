@@ -140,6 +140,10 @@ export class DiscoveryPluginSensorGauge {
         this.iconPath=getAssetPath('../assets/fan.svg');
         break;
       }
+      case 'oven':{
+        this.iconPath=getAssetPath('../assets/industrialoven.svg');
+        break;
+      }
     }
     let option = {
       series: [
